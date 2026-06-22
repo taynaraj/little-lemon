@@ -6,6 +6,19 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('Birthday');
 
+  const today = new Date().toISOString().split('T')[0];
+
+  const getIsFormValid = () => {
+    const guestsNumber = Number(guests);
+    return (
+      date !== '' &&
+      time !== '' &&
+      !Number.isNaN(guestsNumber) &&
+      guestsNumber >= 1 &&
+      guestsNumber <= 10
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     submitForm({ date, time, guests, occasion });
@@ -23,6 +36,8 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
         <input
           type="date"
           id="res-date"
+          min={today}
+          required
           value={date}
           onChange={handleDateChange}
         />
@@ -32,6 +47,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
         <label htmlFor="res-time">Choose time</label>
         <select
           id="res-time"
+          required
           value={time}
           onChange={(e) => setTime(e.target.value)}
         >
@@ -50,6 +66,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
           id="guests"
           min="1"
           max="10"
+          required
           value={guests}
           onChange={(e) => setGuests(e.target.value)}
         />
@@ -67,7 +84,11 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
         </select>
       </div>
 
-      <button type="submit" className="submit-button">
+      <button
+        type="submit"
+        className="submit-button"
+        disabled={!getIsFormValid()}
+      >
         Make Your Reservation
       </button>
     </form>
