@@ -24,6 +24,15 @@ export function updateTimes(state, action) {
   return state;
 }
 
+export function submitForm(formData, navigate) {
+  if (typeof window.submitAPI === 'function' && window.submitAPI(formData)) {
+    const existingBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+    existingBookings.push(formData);
+    localStorage.setItem('bookings', JSON.stringify(existingBookings));
+    navigate('/confirmed');
+  }
+}
+
 function Main() {
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
@@ -31,15 +40,6 @@ function Main() {
     initializeTimes
   );
   const navigate = useNavigate();
-
-  function submitForm(formData) {
-    if (typeof window.submitAPI === 'function' && window.submitAPI(formData)) {
-      const existingBookings = JSON.parse(localStorage.getItem('bookings')) || [];
-      existingBookings.push(formData);
-      localStorage.setItem('bookings', JSON.stringify(existingBookings));
-      navigate('/confirmed');
-    }
-  }
 
   return (
     <main className="main">
@@ -51,7 +51,7 @@ function Main() {
             <BookingPage
               availableTimes={availableTimes}
               dispatch={dispatch}
-              submitForm={submitForm}
+              submitForm={(formData) => submitForm(formData, navigate)}
             />
           }
         />
