@@ -1,12 +1,12 @@
 import BookingForm from './BookingForm';
 
-function BookingPage() {
+function BookingPage({ availableTimes, dispatch }) {
   return (
-    <main className="main booking-page">
+    <div className="booking-page">
       <h1>Reserve a Table</h1>
       <p>Book your table at Little Lemon in a few simple steps.</p>
-      <BookingForm />
-    </main>
+      <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+    </div>
   );
 }
 

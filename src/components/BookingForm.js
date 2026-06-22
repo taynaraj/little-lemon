@@ -1,14 +1,6 @@
 import { useState } from 'react';
 
-function BookingForm() {
-  const [availableTimes] = useState([
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00',
-  ]);
+function BookingForm({ availableTimes, dispatch }) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState(availableTimes[0]);
   const [guests, setGuests] = useState(1);
@@ -16,6 +8,11 @@ function BookingForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+    dispatch({ type: 'UPDATE_TIMES', date: e.target.value });
   };
 
   return (
@@ -26,7 +23,7 @@ function BookingForm() {
           type="date"
           id="res-date"
           value={date}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={handleDateChange}
         />
       </div>
 
