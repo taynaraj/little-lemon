@@ -1,7 +1,10 @@
+import Nav from './Nav';
+
 function Header() {
   return (
-    <header>
-      <img src="" alt="Little Lemon logo" />
+    <header className="header">
+      <img className="logo" src="" alt="Little Lemon logo" />
+      <Nav />
     </header>
   );
 }
