@@ -18,7 +18,7 @@ function BookingForm({ availableTimes, dispatch }) {
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
       <div className="form-group">
-        <label htmlFor="res-date">Choose date</label>
+        <label htmlFor="res-date">Escolha a data</label>
         <input
           type="date"
           id="res-date"
