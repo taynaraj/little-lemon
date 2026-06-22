@@ -1,5 +1,6 @@
 import { useReducer } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import Hero from './Hero';
 import BookingPage from './BookingPage';
 import ConfirmedPage from './ConfirmedPage';
 
@@ -44,7 +45,7 @@ function Main() {
   return (
     <main className="main">
       <Routes>
-        <Route path="/" element={<></>} />
+        <Route path="/" element={<Hero />} />
         <Route
           path="/booking"
           element={

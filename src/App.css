@@ -1,8 +1,17 @@
+:root {
+  --color-primary-green: #495e57;
+  --color-primary-yellow: #f4ce14;
+  --font-display: 'Markazi Text', serif;
+  --font-body: 'Karla', sans-serif;
+  --radius-base: 16px;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   padding: 1rem;
+  font-family: var(--font-body);
 }
 
 .header {
@@ -33,6 +42,73 @@
 
 .main {
   min-height: 50vh;
+}
+
+.hero {
+  background-color: var(--color-primary-green);
+  color: #fff;
+  border-radius: var(--radius-base);
+  padding: 2rem 1.5rem;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--color-primary-yellow);
+  margin: 0;
+}
+
+.hero-content h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.hero-content p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.hero-button {
+  align-self: center;
+  background-color: var(--color-primary-yellow);
+  color: #333333;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-base);
+}
+
+.hero-button:hover {
+  background-color: #e0b910;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    text-align: left;
+    margin: 0;
+  }
+
+  .hero-content h1 {
+    font-size: 64px;
+  }
+
+  .hero-content h2 {
+    font-size: 40px;
+  }
 }
 
 .footer {
@@ -76,10 +152,10 @@
 
 .submit-button {
   padding: 0.75rem;
-  background-color: #495e57;
+  background-color: var(--color-primary-green);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-base);
   font-size: 1rem;
   cursor: pointer;
 }
