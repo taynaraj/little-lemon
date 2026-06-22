@@ -34,6 +34,9 @@ function Main() {
 
   function submitForm(formData) {
     if (typeof window.submitAPI === 'function' && window.submitAPI(formData)) {
+      const existingBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+      existingBookings.push(formData);
+      localStorage.setItem('bookings', JSON.stringify(existingBookings));
       navigate('/confirmed');
     }
   }
