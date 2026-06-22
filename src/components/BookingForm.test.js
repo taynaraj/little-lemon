@@ -44,9 +44,7 @@ test('disables the submit button when required fields are empty', () => {
     />
   );
 
-  const submitButton = screen.getByRole('button', {
-    name: /make your reservation/i,
-  });
+  const submitButton = screen.getByRole('button', { name: 'On Click' });
   expect(submitButton).toBeDisabled();
 });
 
@@ -62,9 +60,7 @@ test('enables the submit button when all required fields are valid', () => {
   const dateInput = screen.getByLabelText('Escolha a data');
   const timeSelect = screen.getByLabelText('Choose time');
   const guestsInput = screen.getByLabelText('Number of guests');
-  const submitButton = screen.getByRole('button', {
-    name: /make your reservation/i,
-  });
+  const submitButton = screen.getByRole('button', { name: 'On Click' });
 
   fireEvent.change(dateInput, { target: { value: '2026-07-01' } });
   fireEvent.change(timeSelect, { target: { value: '17:00' } });
